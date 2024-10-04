@@ -1,0 +1,47 @@
+volumes:
+  db-store:
+
+services:
+  web:
+    platform: linux/arm64
+    build:
+      context: .
+      dockerfile: ./infra/docker/httpd-php/Dockerfile
+    ports:
+      - 1080:80
+    volumes:
+      - ./src:/var/www/html/src/
+      - ./infra/docker/httpd-php/php.ini:/usr/local/etc/php/php.ini
+    tty: true
+    links:
+      - mysql
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+  mysql:
+    image: mysql
+    volumes:
+      - db-store:/var/lib/mysql
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: sercret
+      MYSQL_DATABASE: mysql_sample
+      MYSQL_USER: phper
+      MYSQL_PASSWORD: sercret
+
+  vite:
+    build:
+      context: .
+      dockerfile: ./infra/docker/httpd-php/Dockerfile
+    ports:
+      - 5173:5173
+    volumes:
+      - ./src:/var/www/html/src/
+    command: npm run dev
+    working_dir: /var/www/html/src
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - web

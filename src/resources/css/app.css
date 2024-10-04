@@ -1,0 +1,53 @@
+:root {
+  --transition: .15s;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 36px;
+  letter-spacing: .1em;
+}
+
+.form-control::placeholder {
+  color: #999;
+}
+
+label, button{
+  user-select: none;
+}
+
+li {
+  transition: var(--transition);
+}
+
+li:hover {
+  background: #f6f8fa;
+}
+
+input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+}
+
+button {
+  white-space: nowrap;
+}
+
+button:has(span) {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+button:has(span):hover {
+  opacity: 50%;
+  cursor: default;
+}
