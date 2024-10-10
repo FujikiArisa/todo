@@ -46,7 +46,6 @@ $ docker compose exec web php artisan make:controller TopController
 $ docker compose exec web php artisan make:controller ToDoController --api
 ~~~
 
-
 * Table
 ~~~sh
 $ docker compose exec web php artisan make:migration create_users
@@ -72,4 +71,9 @@ $ docker compose exec web php artisan migrate:rollback
 * Request
 ~~~sh
 $ docker compose exec web php artisan make:request リクエストクラス名
+~~~
+
+* Policy
+~~~sh
+$ docker compose exec web php artisan make:policy TodoPolicy
 ~~~
