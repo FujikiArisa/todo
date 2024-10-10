@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger("user_id")->nullable(false);
             $table->text("content")->nullable(false);
+
+            $table->boolean('completed')->default(false)->comment("完了フラグ");
+
             $table->timestamps();
             $table->softDeletes();
         });

@@ -4,7 +4,7 @@
       <form class="modal-content p-4" @submit.prevent="updateTodo()">
         <!-- 内容 -->
         <div class="modal-body">
-          <input type="text" name="content" class="form-control bg-body-secondary fs-5" placeholder="タスク内容を編集" v-model="editedTodo.title">
+          <input type="text" name="content" class="form-control bg-body-secondary fs-5" placeholder="タスク内容を編集" v-model="editedTodo.content">
         </div>
         <!-- キャンセル・完了 -->
         <div class="modal-footer border-0 gap-2">

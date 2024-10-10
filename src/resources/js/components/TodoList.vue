@@ -21,7 +21,7 @@
             class="form-check-input"
             @change.prevent="checked(todo.id)"
             style="min-width: 20px; min-height: 20px;">
-          <span class="ps-3 fs-5">{{ todo.title }}</span>
+          <span class="ps-3 fs-5">{{ todo.content }}</span>
         </label>
 
         <!-- ボタン -->
@@ -68,7 +68,7 @@ const checked = async (id) => {
 const addTodo = async () => {
   if (newTodo.value.trim()) {
     try {
-      const response = await api.post('/todos', { title: newTodo.value })
+      const response = await api.post('/todos', { content: newTodo.value })
       todos.value = response.data.todos ?? []
       newTodo.value = ''
     } catch (error) {
